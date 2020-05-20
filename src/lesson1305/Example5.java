@@ -1,9 +1,6 @@
 package lesson1305;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -24,12 +21,12 @@ public class Example5 {
         Stream<String> str5=builder.add("wwewew").add("ssddsd").build();
         Predicate<String>   pr=w->w.length()>3;
         str2.filter(w->Character.isUpperCase(w.charAt(0)));
-        str2.filter(rty->{
-            String[] arr1=rty.split("");
-            return arr1[0].toUpperCase().equals(arr1[0]);
-        });
-        str2.filter(q-> !q.substring(0,1).toLowerCase().equals(q.substring(0,1)));
-str2.filter(q->q.matches("[A-Z]([A-Za-z]*)"));
+//        str2.filter(rty->{
+//            String[] arr1=rty.split("");
+//            return arr1[0].toUpperCase().equals(arr1[0]);
+//        });
+//        str2.filter(q-> !q.substring(0,1).toLowerCase().equals(q.substring(0,1)));
+//str2.filter(q->q.matches("[A-Z]([A-Za-z]*)"));
 Consumer<Integer> con= (Integer p)->System.out.println(p);
 Consumer<Integer> con1= System.out::println;
         //public void accept(Integer integer) {
@@ -41,12 +38,32 @@ Consumer<String> cons34=w-> System.out.println(w.substring(w.length()-2,w.length
 Consumer<String> cons35=Example5::lastLetter;
 Example5 ex33=new Example5();
 cons35=ex33::lastLetter33;
+
         Function<Integer,String> qwe=w->String.valueOf(w);
 
             //public String apply(Integer integer) {
-
+int[]  arr55={3,6,8,4,9};
+        System.out.println(binarySearch(new int[]{5,3,2,6},90));
         }
 
+    public static int binarySearch(int[]arr,int elemToSearch){
+        int firstElem = 0;
+        int lastElem = arr.length-1;
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+        while (firstElem<=lastElem){
+            int middleElem = (firstElem + lastElem)/2;
+            if (arr[middleElem]==elemToSearch){
+                return middleElem;
+            }else if(arr[middleElem]<elemToSearch) {
+                firstElem = middleElem + 1;
+
+            }else if(arr[middleElem]>elemToSearch){
+                firstElem = middleElem-1;
+            }
+        }
+        return -1;
+    }
 
    static  void  lastLetter(String str){
         System.out.println(str.split("")[str.length()-1]);
