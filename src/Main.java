@@ -1,4 +1,11 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -67,6 +74,35 @@ public class Main {
 
         //int div2 = exc.OtherDivNumbers(1, 0);
         //System.out.println(div2);
+        
+        // Streams
+
+        Stream<String> setVal = Stream.of("Java", "JS", "C#");
+        setVal.forEach(l->System.out.println(l));
+
+        ArrayList<String> languages = new ArrayList<String>();
+        Collections.addAll(languages, "Java", "JS", "C#", "C++", "-------------");
+        Stream<String> langStream = languages.stream();
+        langStream.forEach(l-> System.out.println(l));
+
+        Stream<String> langArray = Arrays.stream(new String[]{ "Java", "JS", "C#", "C++", "-------------" });
+        langArray.forEach(l-> System.out.println(l));
+
+        List<String> lines = new ArrayList<>();
+        Path path = Paths.get("src/file.txt");
+
+        try (Stream<String> lineStream = Files.lines(path)) {
+            lines = lineStream.collect(Collectors.toList());
+        } catch (IOException ignored) { }
+        System.out.println(lines);
+
+        Streams ex = new Streams();
+        ex.getGeometProgr(1, 50, 5).forEach(x-> System.out.println(x));
+
+        LocalDate localDate = LocalDate.now();
+        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+
+        Streams.getDaysInJava8(LocalDate.of(2020, 7, 28), 7).forEach(d-> System.out.println(dayOfWeek));
 
     }
 }
