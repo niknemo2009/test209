@@ -1,0 +1,28 @@
+package com.company;
+
+
+
+public class Main {
+    static public void commonElem(int l1, int r1, int l2, int r2) {
+        int firstElementLeftBoundary = Math.min(l1, r1);
+        int firstElementRightBoundary = Math.max(l1, r1);
+        int secondElementLeftBoundary = Math.min(l2, r2);
+        int secondElementRightBoundary = Math.max(l2, r2);
+            if (!(firstElementLeftBoundary > secondElementRightBoundary || firstElementRightBoundary < secondElementLeftBoundary)){
+             int intersectionLeft = Math.max(firstElementLeftBoundary,secondElementLeftBoundary );
+             int intersectionRight = Math.min(firstElementRightBoundary,secondElementRightBoundary);
+             System.out.println("Common elements:");
+             for (int i = intersectionLeft; i <= intersectionRight; i++){
+                 System.out.print(i + ",");
+             }
+             System.out.println();
+            }
+            else {
+                System.out.println("Not intersect");
+            }
+        }
+    public static void main(String[] args) {
+	 commonElem(5, 11,0,9);
+
+    }
+}
