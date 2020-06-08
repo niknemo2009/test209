@@ -5,6 +5,11 @@ import java.util.*;
 public class PoliticForceMember implements  Comparable<PoliticForceMember>{
     String name;
     Map<LocalDate, Integer> dohid = new HashMap<>();
+    
+    public PoliticForceMember(String name, Map dohid) {
+        this.name = name;
+        this.dohid = dohid;
+    }
 
     int writeDohod(LocalDate data, int totalDohod) {
         return dohid.put(data, totalDohod);
@@ -22,5 +27,12 @@ public class PoliticForceMember implements  Comparable<PoliticForceMember>{
                        sum[0] = sum[0] + dohid.get(r);
                 });
         return sum[0];
+    }
+    
+    @Override
+    public String toString() {
+        return "Members {" +
+                "name=" + name +
+                ", list of income='" + dohid + "}'";
     }
 }
