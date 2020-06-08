@@ -31,9 +31,9 @@ public class PoliticForce {
 
     @Override
     public String toString() {
-        return "Client {" +
-                "typeOfHuman=" + name +
-                ", capacityOfGym='" + spisok + "}'";
+        return "Members {" +
+                "name of member=" + name +
+                ", List of ='" + spisok + "}'";
     }
 
 }
