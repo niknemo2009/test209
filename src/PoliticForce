@@ -5,6 +5,11 @@ import java.util.TreeSet;
 public class PoliticForce {
     String name;
     Set<PoliticForceMember> spisok = new TreeSet<>();
+    
+    public PoliticForce(String name, Set spisok) {
+        this.name = name;
+        this.spisok = spisok;
+    }
 
     boolean addMember(PoliticForceMember mem) {
         boolean result = false;
@@ -14,6 +19,21 @@ public class PoliticForce {
 
     boolean removeMember(String name) {
         return spisok.removeIf(w->w.name.equals(name));
+    }
+    
+    ArrayList<PoliticForceMember> congressMember(PoliticForceMember congressMem) {
+        ArrayList<PoliticForceMember> congMem = new ArrayList<>();
+        if (spisok.contains(congressMem)) {
+            congMem.add(congressMem);
+        }
+        return congMem;
+    }
+
+    @Override
+    public String toString() {
+        return "Client {" +
+                "typeOfHuman=" + name +
+                ", capacityOfGym='" + spisok + "}'";
     }
 
 }
